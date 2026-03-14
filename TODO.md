@@ -6,9 +6,9 @@
     2. create server folder/files(done)
     3. code files
         1. app
-        2. models
-        3. config
-        4. seed
+        2. models (done)
+        3. config (done)
+        4. seed (done)
     4. migrate database
 2. Set up Client
     1. install React/Javascript dependencies
