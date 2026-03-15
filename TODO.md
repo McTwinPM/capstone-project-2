@@ -5,7 +5,7 @@
     1. install python dependencies(done)
     2. create server folder/files(done)
     3. code files
-        1. app
+        1. app (done)
         2. models (done)
         3. config (done)
         4. seed (done)

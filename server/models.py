@@ -59,6 +59,10 @@ class UserSchema(Schema):
             raise ValidationError("Date of birth cannot be in the future.", field_name='date_of_birth')
         if 'date_of_birth' in data and (datetime.now().date() - data['date_of_birth']).days < 21 * 365:
             raise ValidationError("User must be at least 21 years old.", field_name='date_of_birth')
+    @validates_schema
+    def validate_password(self, data, **kwargs):
+        if 'password' in data and len(data['password']) < 6:
+            raise ValidationError("Password must be at least 6 characters long.", field_name='password')
         
 class DrinkRecipeSchema(Schema):
     id = fields.Int(dump_only=True)
