@@ -1,6 +1,5 @@
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.ext.hybrid import hybrid_property
-from .config import db, bcrypt
 from sqlalchemy.orm import validates
 from marshmallow import Schema, fields, validates_schema, ValidationError
 from datetime import datetime
