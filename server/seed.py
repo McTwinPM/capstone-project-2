@@ -1,6 +1,6 @@
 from random import choice, randint
 from faker import Faker
-from .models import db, User, DrinkRecipe
+from models import db, User, DrinkRecipe
 from app import app
 import os
 
@@ -31,6 +31,7 @@ with app.app_context():
 
         users.append(user)
     db.session.add_all(users)
+    db.session.commit()
     print("Creating drink recipes...")
     drink_recipes = []
     for i in range(30):
