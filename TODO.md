@@ -9,7 +9,7 @@
         2. models (done)
         3. config (done)
         4. seed (done)
-    4. migrate database
+    4. migrate database (done)
 2. Set up Client
     1. install React/Javascript dependencies
     2. set up components
