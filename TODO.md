@@ -11,7 +11,7 @@
         4. seed (done)
     4. migrate database (done)
 2. Set up Client
-    1. install React/Javascript dependencies
+    1. install React/Javascript dependencies (done)
     2. set up components
         1. Navbar
         2. AddRecipeForm
