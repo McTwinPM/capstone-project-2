@@ -17,7 +17,8 @@
         2. AddRecipeForm
         3. EditRecipeButton
         4. DeleteRecipeButton
-        5. SearchBar
+        5. SearchBar (done)
+        6. Loginform
     3. Set up pages
         1. Home
         2. RecipeList
@@ -31,7 +32,7 @@
 
 3. Cleanup
     1. frontend
-        1. remove 'assets' and 'public' folders
+        1. remove 'assets' and 'public' folders (done)
         2. remove comments of old code/unneeded comments
     2. backend
         1. remove comments of old code/unneeded comments
