@@ -21,12 +21,12 @@
         6. Loginform (done)
         7. SignUpForm
     3. Set up pages
-        1. Home
+        1. Home/Login (done)
         2. RecipeList
         3. RecipeID
         4. AddRecipe
     4. CSS
-        1. App
+        1. App (done)
         2. Home
         3. RecipeList
         4. AddRecipe page
