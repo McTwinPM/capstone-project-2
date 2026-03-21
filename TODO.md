@@ -18,7 +18,8 @@
         3. EditRecipeButton
         4. DeleteRecipeButton
         5. SearchBar (done)
-        6. Loginform
+        6. Loginform (done)
+        7. SignUpForm
     3. Set up pages
         1. Home
         2. RecipeList
@@ -29,7 +30,6 @@
         2. Home
         3. RecipeList
         4. AddRecipe page
-
 3. Cleanup
     1. frontend
         1. remove 'assets' and 'public' folders (done)
