@@ -13,7 +13,7 @@
 2. Set up Client
     1. install React/Javascript dependencies (done)
     2. set up components
-        1. Navbar
+        1. Navbar (done)
         2. AddRecipeForm
         3. EditRecipeButton
         4. DeleteRecipeButton
