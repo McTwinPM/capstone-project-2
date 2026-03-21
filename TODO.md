@@ -19,7 +19,7 @@
         4. DeleteRecipeButton
         5. SearchBar (done)
         6. Loginform (done)
-        7. SignUpForm
+        7. SignUpForm (done)
     3. Set up pages
         1. Home/Login (done)
         2. RecipeList
