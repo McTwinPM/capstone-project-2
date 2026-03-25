@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import Login from './Pages/Login';
 import Navbar from './Components/Navbar';
+import DrinkRecipes from './Pages/DrinkRecipes';
 
 function App() {
   const [user, setUser] = useState(null)
@@ -30,8 +31,9 @@ function App() {
     <>
       <Navbar setUser={setUser}/>
       <main>
-
         <h1>Welcome, {user.username}!</h1>
+        <DrinkRecipes />
+    
       </main>
     </>
   )
