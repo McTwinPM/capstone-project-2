@@ -3,6 +3,7 @@ import './App.css'
 import Login from './Pages/Login';
 import Navbar from './Components/Navbar';
 import DrinkRecipes from './Pages/DrinkRecipes';
+import AddDrinkRecipe from './Pages/AddDrinkRecipe';
 
 function App() {
   const [user, setUser] = useState(null)
@@ -33,7 +34,7 @@ function App() {
       <main>
         <h1>Welcome, {user.username}!</h1>
         <DrinkRecipes />
-    
+        <AddDrinkRecipe />
       </main>
     </>
   )

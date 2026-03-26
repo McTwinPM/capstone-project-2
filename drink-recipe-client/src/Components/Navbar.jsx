@@ -1,4 +1,4 @@
-import { Navlink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Navbar({ setUser}) {
     function handleLogout() {
@@ -7,8 +7,8 @@ function Navbar({ setUser}) {
     }
   return (
     <nav>
-      <Navlink to="/">My Drink Recipes</Navlink>
-      <Navlink to="/add">Add Recipe</Navlink>
+      <NavLink to="/">My Drink Recipes</NavLink>
+      <NavLink to="/add">Add Recipe</NavLink>
       <button onClick={handleLogout}>Logout</button>
     </nav>
   );
