@@ -14,7 +14,7 @@
     1. install React/Javascript dependencies (done)
     2. set up components
         1. Navbar (done)
-        2. AddRecipeForm
+        2. AddRecipeForm (done)
         3. EditRecipeButton
         4. DeleteRecipeButton
         5. SearchBar (done)
@@ -24,7 +24,7 @@
         1. Home/Login (done)
         2. Recipes (done)
         3. RecipeID (done)
-        4. AddRecipe
+        4. AddRecipe (done)
     4. CSS
         1. App
         2. Home
