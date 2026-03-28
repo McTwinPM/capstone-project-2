@@ -4,17 +4,38 @@ import React, { useState } from 'react';
 function SignupForm({ onLogin }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [dateOfBirth, setDateOfBirth] = useState('')
 
     function handleSubmit(e) {
         e.preventDefault();
-        fetch('http://localhost:5555/signup', {
+        fetch('/api/signup', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username, password }),
+            body: JSON.stringify({ username, password, date_of_birth: dateOfBirth }),
         })
             .then((res) => {
                 if (res.ok) {
-                    res.json().then(({ token, user }) => onLogin(token, user));
+                    res.json().then(({ access_token }) => { // Use access_token, not token
+                        // Fetch user data after successful signup
+                        fetch('/api/me', {
+                            headers: {
+                                'Authorization': `Bearer ${access_token}`
+                            }
+                        })
+                            .then(userRes => {
+                                if (userRes.ok) {
+                                    return userRes.json();
+                                }
+                                throw new Error('Failed to fetch user data');
+                            })
+                            .then(user => {
+                                onLogin(access_token, user); // Pass both token and user
+                            })
+                            .catch(err => {
+                                console.error('Error fetching user:', err);
+                                alert('Signup successful but failed to load user data');
+                            });
+                    });
                 } else {
                     res.json().then(({ error }) => alert(error));
                 }
@@ -40,6 +61,15 @@ function SignupForm({ onLogin }) {
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    required
+                />
+            </div>
+            <div>
+                <label>Date of Birth:</label>
+                <input
+                    type="date"
+                    value={dateOfBirth}
+                    onChange={(e) => setDateOfBirth(e.target.value)}
                     required
                 />
             </div>

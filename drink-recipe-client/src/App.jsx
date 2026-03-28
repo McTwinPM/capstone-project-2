@@ -4,12 +4,13 @@ import Login from './Pages/Login';
 import Navbar from './Components/Navbar';
 import DrinkRecipes from './Pages/DrinkRecipes';
 import AddDrinkRecipe from './Pages/AddDrinkRecipe';
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
   const [user, setUser] = useState(null)
 
   useEffect(() => {
-    fetch("/me", {
+    fetch("/api/me", {
       headers: {
         "Authorization": `Bearer ${localStorage.getItem("token")}`
       }
@@ -33,8 +34,10 @@ function App() {
       <Navbar setUser={setUser}/>
       <main>
         <h1>Welcome, {user.username}!</h1>
-        <DrinkRecipes />
-        <AddDrinkRecipe />
+        <Routes>
+          <Route path="/" element={<DrinkRecipes />} />
+          <Route path="/add" element={<AddDrinkRecipe />} />
+        </Routes>
       </main>
     </>
   )

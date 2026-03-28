@@ -37,7 +37,7 @@ class Signup(Resource):
             db.session.add(user)
             db.session.commit()
 
-            access_token = create_access_token(identity=user.id)
+            access_token = create_access_token(identity=str(user.id))
             return ({"message": "User created successfully", "access_token": access_token}), 201
         except ValidationError as err:
             return (err.messages, 400)
@@ -45,7 +45,7 @@ class Signup(Resource):
 class WhoAmI(Resource):
     def get(self):
         user_id = get_jwt_identity()
-        user = User.query.get(user_id)
+        user = User.query.get(int(user_id))
         if not user:
             return ({"error": "User not found"}), 404
         
@@ -62,7 +62,7 @@ class Login(Resource):
         if not user or not user.authenticate(password):
             return ({"error": "Invalid username or password"}), 401
         
-        access_token = create_access_token(identity=user.id)
+        access_token = create_access_token(identity=str(user.id))
         return ({"message": "Login successful", "access_token": access_token}), 200
 
 class DrinkRecipeList(Resource):

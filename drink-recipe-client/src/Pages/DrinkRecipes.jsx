@@ -1,10 +1,9 @@
-import { Link, useOutletContext } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Navbar from "../Components/Navbar";
 
 function DrinkRecipes() {
   const [recipes, setRecipes] = useState([]);
-  const { user } = useOutletContext();
+
 
   useEffect(() => {
     fetch("/drink_recipes", {
@@ -18,8 +17,6 @@ function DrinkRecipes() {
 
   return (
     <>
-      <Navbar />
-      <main>
         <h1>Drink Recipes</h1>
         <ul>
           {recipes.map((recipe) => (
@@ -28,7 +25,6 @@ function DrinkRecipes() {
             </li>
           ))}
         </ul>
-      </main>
     </>
   );
 }
