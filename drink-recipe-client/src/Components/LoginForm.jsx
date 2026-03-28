@@ -6,14 +6,42 @@ function LoginForm({ onLogin }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch('http://localhost:5555/login', {
+    fetch('/api/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, password }),
     })
       .then((res) => {
         if (res.ok) {
-            res.json().then(({token, user}) => onLogin(token, user));
+          res.json().then(({ access_token }) => {
+            
+            // Fetch user data separately
+            fetch('/api/me', {
+              headers: {
+                'Authorization': `Bearer ${access_token}`
+              }
+            })
+              .then(userRes => {
+                
+                if (userRes.ok) {
+                  return userRes.json();
+                } else {
+                  // Get the error details from the response
+                  return userRes.json().then(errorData => {
+                    throw new Error(`Failed to fetch user data: ${errorData.error || userRes.status}`);
+                  }).catch(() => {
+                    throw new Error(`Failed to fetch user data: HTTP ${userRes.status}`);
+                  });
+                }
+              })
+              .then(user => {
+                onLogin(access_token, user);
+              })
+              .catch(err => {
+                console.error('Error fetching user:', err);
+                alert('Login successful but failed to load user data: ' + err.message);
+              });
+          });
         } else {
           res.json().then(({ error }) => alert(error));
         }
