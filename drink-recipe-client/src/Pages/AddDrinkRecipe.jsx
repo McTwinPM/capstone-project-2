@@ -14,7 +14,7 @@ function AddDrinkRecipe() {
       instructions
     };
 
-    fetch("/drink_recipes", {
+    fetch("/api/drink_recipes", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -37,7 +37,6 @@ function AddDrinkRecipe() {
 
   return (
     <>
-      <Navbar />
       <main>
         <h1>Add a New Drink Recipe</h1>
         <form onSubmit={handleSubmit}>

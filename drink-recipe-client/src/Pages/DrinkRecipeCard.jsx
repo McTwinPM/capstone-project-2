@@ -4,10 +4,9 @@ import { useEffect, useState } from "react";
 function DrinkRecipeCard() {
   const [recipe, setRecipe] = useState(null);
   const { id } = useParams();
-  const { user } = useOutletContext();
 
   useEffect(() => {
-    fetch(`/drink_recipes/${id}`, {
+    fetch(`/api/drink_recipes/${id}`, {
       headers: {
         "Authorization": `Bearer ${localStorage.getItem("token")}`
       }
@@ -16,18 +15,15 @@ function DrinkRecipeCard() {
       .then((data) => setRecipe(data));
   }, [id]);
 
-  if (!recipe) return <p>Loading...</p>;
+  if (!recipe) return <p>No recipe found.</p>;
 
   return (
     <div>
       <h2>{recipe.name}</h2>
       <h3>Ingredients:</h3>
-      <ul>
-        {recipe.ingredients.map((ingredient, index) => (
-          <li key={index}>{ingredient}</li>
-        ))}
-      </ul>
-      <p>Instructions: {recipe.instructions}</p>
+      <p>{recipe.ingredients}</p>
+      <h3>Instructions:</h3>
+      <p>{recipe.instructions}</p>
     </div>
   );
 }

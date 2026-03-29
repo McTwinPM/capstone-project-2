@@ -69,7 +69,7 @@ class DrinkRecipeSchema(Schema):
     ingredients = fields.Str(required=True)
     instructions = fields.Str(required=True)
     user_id = fields.Int(required=True)
-    user = fields.Nested(UserSchema, only=['id', 'username'], exclude=['date_of_birth', 'password', 'drink_recipes'])
+    user = fields.Nested(UserSchema, only=['id', 'username'])
 
     @validates_schema
     def validate_user_id(self, data, **kwargs):

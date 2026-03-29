@@ -8,13 +8,13 @@ from datetime import datetime
 
 @app.before_request
 def before_request():
-    open_acess_list = [
+    open_access_list = [
         'signup',
         'login',
         'static'
     ]
 
-    if request.endpoint not in open_acess_list:
+    if request.endpoint not in open_access_list:
         try:
             verify_jwt_in_request()
         except Exception as e:
