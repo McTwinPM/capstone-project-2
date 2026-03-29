@@ -6,13 +6,13 @@ function DrinkRecipes() {
 
 
   useEffect(() => {
-    fetch("/drink_recipes", {
+    fetch("/api/drink_recipes", {
       headers: {
         "Authorization": `Bearer ${localStorage.getItem("token")}`
       }
     })
       .then((r) => r.json())
-      .then((data) => setRecipes(data));
+      .then((data) => setRecipes(data.drink_recipes));
   }, []);
 
   return (
