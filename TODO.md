@@ -15,8 +15,8 @@
     2. set up components
         1. Navbar (done)
         2. AddRecipeForm (done)
-        3. EditRecipeButton
-        4. DeleteRecipeButton
+        3. EditRecipeButton (done)
+        4. DeleteRecipeButton (done)
         5. SearchBar (done)
         6. Loginform (done)
         7. SignUpForm (done)
@@ -30,6 +30,7 @@
         2. Home
         3. RecipeList
         4. AddRecipe page
+        5. Navbar
 3. Cleanup
     1. frontend
         1. remove 'assets' and 'public' folders (done)

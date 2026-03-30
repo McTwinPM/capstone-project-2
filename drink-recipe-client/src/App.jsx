@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import Login from './Pages/Login';
 import Navbar from './Components/Navbar';
+import './styles/Navbar.css';
 import DrinkRecipes from './Pages/DrinkRecipes';
 import AddDrinkRecipe from './Pages/AddDrinkRecipe';
 import DrinkRecipeCard from './Pages/DrinkRecipeCard';

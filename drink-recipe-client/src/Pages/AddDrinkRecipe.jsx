@@ -49,7 +49,7 @@ function AddDrinkRecipe() {
             />
           </div>
           <div>
-            <label>Ingredients (comma separated):</label>
+            <label>Ingredients:</label>
             <input
               type="text"
               value={ingredients}
