@@ -1,0 +1,20 @@
+nav.navbar {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 16px;
+    border-bottom: 1px solid var(--border);
+    background-color: var(--bg);
+    color: var(--text);
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.logout-button {
+    background-color: transparent;
+    border: none;
+    color: red;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    align-self: flex-start;
+}

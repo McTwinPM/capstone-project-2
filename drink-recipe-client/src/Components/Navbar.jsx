@@ -6,10 +6,10 @@ function Navbar({ setUser}) {
         setUser(null);
     }
   return (
-    <nav>
+    <nav className="navbar">
       <NavLink to="/">My Drink Recipes</NavLink>
       <NavLink to="/add">Add Recipe</NavLink>
-      <button onClick={handleLogout}>Logout</button>
+      <button className="logout-button" onClick={handleLogout}>Logout</button>
     </nav>
   );
 }
