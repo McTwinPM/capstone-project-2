@@ -68,7 +68,7 @@ class DrinkRecipeSchema(Schema):
     name = fields.Str(required=True)
     ingredients = fields.Str(required=True)
     instructions = fields.Str(required=True)
-    user_id = fields.Int(required=True)
+    user_id = fields.Int(dump_only=True)
     user = fields.Nested(UserSchema, only=['id', 'username'])
 
     @validates_schema
