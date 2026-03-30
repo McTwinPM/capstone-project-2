@@ -67,9 +67,10 @@ class Login(Resource):
 
 class DrinkRecipeList(Resource):
     def get(self):
+        user_id = get_jwt_identity()
         page = request.args.get('page', 1, type=int)
         per_page = request.args.get('per_page', 10, type=int)
-        drink_recipes = DrinkRecipe.query.paginate(page=page, per_page=per_page, error_out=False)
+        drink_recipes = DrinkRecipe.query.filter_by(user_id=user_id).paginate(page=page, per_page=per_page, error_out=False)
         drink_recipe_schema = DrinkRecipeSchema(many=True)
         return ({
             "drink_recipes": drink_recipe_schema.dump(drink_recipes.items),
@@ -84,7 +85,7 @@ class DrinkRecipeList(Resource):
             drink_recipe_schema = DrinkRecipeSchema()
             drink_recipe_data = drink_recipe_schema.load(data)
 
-            user = User.query.get(drink_recipe_data['user_id'])
+            user = User.query.get(get_jwt_identity())
             if not user:
                 return ({"error": "User not found"}), 404
             
@@ -92,7 +93,7 @@ class DrinkRecipeList(Resource):
                 name=drink_recipe_data['name'],
                 ingredients=drink_recipe_data['ingredients'],
                 instructions=drink_recipe_data['instructions'],
-                user_id=drink_recipe_data['user_id']
+                user_id=get_jwt_identity()
             )
             db.session.add(drink_recipe)
             db.session.commit()
