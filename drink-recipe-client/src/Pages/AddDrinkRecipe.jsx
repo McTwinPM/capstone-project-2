@@ -10,27 +10,26 @@ function AddDrinkRecipe() {
     e.preventDefault();
     const newRecipe = {
       name,
-      ingredients: ingredients.split(",").map(ing => ing.trim()),
-      instructions
+      ingredients,
+      instructions,
     };
 
     fetch("/api/drink_recipes", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${localStorage.getItem("token")}`
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
-      body: JSON.stringify(newRecipe)
+      body: JSON.stringify(newRecipe),
     })
       .then((r) => r.json())
       .then((data) => {
         if (data.error) {
-            <p>Error adding recipe: {data.error}</p>
-            console.error("Error adding recipe:", data.error);
-
+          <p>Error adding recipe: {data.error}</p>;
+          console.error("Error adding recipe:", data.error);
         } else {
-            <p>Recipe added successfully!</p>
-            console.log("Recipe added successfully:", data);
+          <p>Recipe added successfully!</p>;
+          console.log("Recipe added successfully:", data);
         }
       });
   }
@@ -42,28 +41,28 @@ function AddDrinkRecipe() {
         <form onSubmit={handleSubmit}>
           <div>
             <label>Name:</label>
-            <input 
-              type="text" 
-              value={name} 
-              onChange={(e) => setName(e.target.value)} 
-              required 
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
             />
           </div>
           <div>
             <label>Ingredients (comma separated):</label>
-            <input 
-              type="text" 
-              value={ingredients} 
-              onChange={(e) => setIngredients(e.target.value)} 
-              required 
+            <input
+              type="text"
+              value={ingredients}
+              onChange={(e) => setIngredients(e.target.value)}
+              required
             />
           </div>
           <div>
             <label>Instructions:</label>
-            <textarea 
-              value={instructions} 
-              onChange={(e) => setInstructions(e.target.value)} 
-              required 
+            <textarea
+              value={instructions}
+              onChange={(e) => setInstructions(e.target.value)}
+              required
             />
           </div>
           <button type="submit">Add Recipe</button>
