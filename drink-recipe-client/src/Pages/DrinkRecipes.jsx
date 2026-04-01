@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import SearchBar from "../Components/SearchBar";
 
 function DrinkRecipes() {
   const [recipes, setRecipes] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
 
   useEffect(() => {
@@ -15,11 +17,17 @@ function DrinkRecipes() {
       .then((data) => setRecipes(data.drink_recipes));
   }, []);
 
+  const filteredRecipes = recipes.filter((recipe) =>
+    recipe.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <>
-        <h1>Drink Recipes</h1>
+        <h1 className="title">Drink Recipes</h1>
+        <SearchBar className="search-bar" searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+
         <ul>
-          {recipes.map((recipe) => (
+          {filteredRecipes.map((recipe) => (
             <li key={recipe.id}>
               <Link to={`/drink_recipes/${recipe.id}`}>{recipe.name}</Link>
             </li>
