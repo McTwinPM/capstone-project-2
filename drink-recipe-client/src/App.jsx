@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import './App.css'
 import Login from './Pages/Login';
 import Navbar from './Components/Navbar';
 import './styles/Navbar.css';
@@ -35,7 +34,7 @@ function App() {
     <>
       <Navbar setUser={setUser}/>
       <main>
-        <h1>Welcome, {user.username}!</h1>
+        <h1 className="welcome">Welcome, {user.username}!</h1>
         <Routes>
           <Route path="/" element={<DrinkRecipes />} />
           <Route path="/drink_recipes/:id" element={<DrinkRecipeCard />} />
