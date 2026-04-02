@@ -1,5 +1,6 @@
 import Navbar from "../Components/Navbar";
 import { useState, useEffect } from "react";
+import '../styles/AddDrinkRecipe.css';
 
 function AddDrinkRecipe() {
   const [name, setName] = useState("");

@@ -45,7 +45,7 @@ class Signup(Resource):
 class WhoAmI(Resource):
     def get(self):
         user_id = get_jwt_identity()
-        user = User.query.get(int(user_id))
+        user = db.session.get(User, int(user_id))
         if not user:
             return ({"error": "User not found"}), 404
         
@@ -85,7 +85,7 @@ class DrinkRecipeList(Resource):
             drink_recipe_schema = DrinkRecipeSchema()
             drink_recipe_data = drink_recipe_schema.load(data)
 
-            user = User.query.get(get_jwt_identity())
+            user = db.session.get(User, get_jwt_identity())
             if not user:
                 return ({"error": "User not found"}), 404
             
@@ -104,7 +104,7 @@ class DrinkRecipeList(Resource):
 
 class DrinkRecipeDetail(Resource):
     def get(self, recipe_id):
-        drink_recipe = DrinkRecipe.query.get(recipe_id)
+        drink_recipe = db.session.get(DrinkRecipe, recipe_id)
         if not drink_recipe:
             return ({"error": "Drink recipe not found"}), 404
         
@@ -112,7 +112,7 @@ class DrinkRecipeDetail(Resource):
         return (drink_recipe_schema.dump(drink_recipe), 200)
 
     def patch(self, recipe_id):
-        drink_recipe = DrinkRecipe.query.get(recipe_id)
+        drink_recipe = db.session.get(DrinkRecipe, recipe_id)
         if not drink_recipe:
             return ({"error": "Drink recipe not found"}), 404
         
@@ -127,7 +127,7 @@ class DrinkRecipeDetail(Resource):
         except ValidationError as err:
             return (err.messages, 400)      
     def delete(self, recipe_id):
-        drink_recipe = DrinkRecipe.query.get(recipe_id)
+        drink_recipe = db.session.get(DrinkRecipe, recipe_id)
         if not drink_recipe:
             return ({"error": "Drink recipe not found"}), 404
         
