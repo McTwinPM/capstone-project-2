@@ -48,7 +48,7 @@ function SignupForm({ onLogin }) {
             <div>
                 <label>Username:</label>
                 <input
-                    className='signup-input'
+                    className='signup-username-input'
                     type="text"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
@@ -58,7 +58,7 @@ function SignupForm({ onLogin }) {
             <div>
                 <label>Password:</label>
                 <input
-                    className='signup-input'
+                    className='signup-password-input'
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
@@ -68,7 +68,7 @@ function SignupForm({ onLogin }) {
             <div>
                 <label>Date of Birth:</label>
                 <input
-                    className='signup-input'
+                    className='signup-dob-input'
                     type="date"
                     value={dateOfBirth}
                     onChange={(e) => setDateOfBirth(e.target.value)}

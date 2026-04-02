@@ -2,6 +2,7 @@ import LoginForm from "../Components/LoginForm";
 import { use, useState } from "react";
 import SignupForm from "../Components/SignupForm";
 import { useNavigate } from "react-router-dom";
+import "../styles/Login.css" 
 
 function Login({ onLogin }) {
     const [showLogin, setShowLogin] = useState(true);
@@ -17,12 +18,12 @@ function Login({ onLogin }) {
         <div>
             {showLogin ? (
                 <>
-                <LoginForm onLogin={handleLogin} />
+                <LoginForm className="login-form" onLogin={handleLogin} />
                 <button onClick={() => setShowLogin(false)}>Sign Up</button>
             </>
             ) : (
                 <>
-                <SignupForm onLogin={handleLogin} />
+                <SignupForm className="signup-form" onLogin={handleLogin} />
                 <button onClick={() => setShowLogin(true)}>Back to Login</button>
                 </>
             )}
