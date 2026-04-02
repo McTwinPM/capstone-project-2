@@ -15,8 +15,7 @@ function SignupForm({ onLogin }) {
         })
             .then((res) => {
                 if (res.ok) {
-                    res.json().then(({ access_token }) => { // Use access_token, not token
-                        // Fetch user data after successful signup
+                    res.json().then(({ access_token }) => {
                         fetch('/api/me', {
                             headers: {
                                 'Authorization': `Bearer ${access_token}`
@@ -29,7 +28,7 @@ function SignupForm({ onLogin }) {
                                 throw new Error('Failed to fetch user data');
                             })
                             .then(user => {
-                                onLogin(access_token, user); // Pass both token and user
+                                onLogin(access_token, user);
                             })
                             .catch(err => {
                                 console.error('Error fetching user:', err);
@@ -49,6 +48,7 @@ function SignupForm({ onLogin }) {
             <div>
                 <label>Username:</label>
                 <input
+                    className='signup-input'
                     type="text"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
@@ -58,6 +58,7 @@ function SignupForm({ onLogin }) {
             <div>
                 <label>Password:</label>
                 <input
+                    className='signup-input'
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
@@ -67,13 +68,14 @@ function SignupForm({ onLogin }) {
             <div>
                 <label>Date of Birth:</label>
                 <input
+                    className='signup-input'
                     type="date"
                     value={dateOfBirth}
                     onChange={(e) => setDateOfBirth(e.target.value)}
                     required
                 />
             </div>
-            <button type="submit">Sign Up</button>
+            <button className='signup-button' type="submit">Sign Up</button>
         </form>
     );
 }
