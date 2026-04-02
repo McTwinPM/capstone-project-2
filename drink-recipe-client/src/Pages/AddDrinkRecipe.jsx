@@ -1,11 +1,12 @@
 import Navbar from "../Components/Navbar";
 import { useState, useEffect } from "react";
-import '../styles/AddDrinkRecipe.css';
+import "../styles/AddDrinkRecipe.css";
 
 function AddDrinkRecipe() {
   const [name, setName] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [instructions, setInstructions] = useState("");
+  const [message, setMessage] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -26,10 +27,10 @@ function AddDrinkRecipe() {
       .then((r) => r.json())
       .then((data) => {
         if (data.error) {
-          <p>Error adding recipe: {data.error}</p>;
+          setMessage(`Error adding recipe: ${data.error}`);
           console.error("Error adding recipe:", data.error);
         } else {
-          <p>Recipe added successfully!</p>;
+          setMessage("Recipe added successfully!");
           console.log("Recipe added successfully:", data);
         }
       });
@@ -66,6 +67,7 @@ function AddDrinkRecipe() {
               required
             />
           </div>
+          {message && <p className= 'message'>{message}</p>}
           <button type="submit">Add Recipe</button>
         </form>
       </main>

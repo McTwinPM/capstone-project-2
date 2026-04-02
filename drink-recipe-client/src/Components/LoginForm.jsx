@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 function LoginForm({ onLogin }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -39,19 +40,20 @@ function LoginForm({ onLogin }) {
               })
               .catch(err => {
                 console.error('Error fetching user:', err);
-                alert('Login successful but failed to load user data: ' + err.message);
+                setError('Login successful but failed to load user data: ' + err.message);
               });
           });
         } else {
-          res.json().then(({ error }) => alert(error));
+          res.json().then(({ error }) => setError(error));
         }
       })
-      .catch((err) => alert('Network error: ' + err.message));
+      .catch((err) => setError('Network error: ' + err.message));
   }
 
   return (
     <form onSubmit={handleSubmit}>
       <h2>Login</h2>
+      {error && <p className="error">{error}</p>}
       <div>
         <label className= 'login-username-label'>Username:</label>
         <input className= 'login-username-input'
