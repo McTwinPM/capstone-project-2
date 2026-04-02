@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import SearchBar from "../Components/SearchBar";
+import '../styles/DrinkRecipes.css';
 
 function DrinkRecipes() {
   const [recipes, setRecipes] = useState([]);
@@ -24,7 +25,7 @@ function DrinkRecipes() {
   return (
     <>
         <h1 className="title">Drink Recipes</h1>
-        <SearchBar className="search-bar" searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+        <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
         <ul>
           {filteredRecipes.map((recipe) => (

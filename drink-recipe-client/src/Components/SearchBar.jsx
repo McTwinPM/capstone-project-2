@@ -12,15 +12,16 @@ function SearchBar({ searchTerm, setSearchTerm }) {
     };
 
     return (
-        <form onSubmit={handleSearch}>
+        <form className='search-form' onSubmit={handleSearch}>
             <input
+                className='search-bar'
                 type="text"
                 ref={searchInputRef}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Search drink recipes..."
             />
-            <button type="submit">Search</button>
+            <button className='search-button' type="submit">Search</button>
         </form>
     );
 }
