@@ -13,7 +13,7 @@ input {
 }
 
 button {
-    background-color: #4c6faf;
+    background-color: #007bff;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -22,7 +22,7 @@ button {
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #0056b3;
 }
 
 .error {
