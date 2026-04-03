@@ -16,6 +16,7 @@ function Login({ onLogin }) {
     }
     return (
         <div>
+            <h1 className="login-title">Welcome to Sláinte</h1>
             {showLogin ? (
                 <>
                 <LoginForm className="login-form" onLogin={handleLogin} />

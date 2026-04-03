@@ -1,5 +1,6 @@
-# Alcohol-Cocktail-Recipe-App
-Welcome to my "Alcohol Cocktail Recipe App"
+# Sláinte
+Welcome to Slainte, an alcohol cocktail recipe app
+
 This app allows users to create an account with a username and password. Once logged in, the user can create and store any number of cocktail recipes, as well as the ability to edit and delete them.
 
 
@@ -60,4 +61,6 @@ Fork and clone this repository
 
  2. Delete button from Drink Recipe List - A delete button would allow the user to delete a recipe without having to view the whole recipe.
 
- 3. ??
+ 3. Ingredient database - I plan on making ingredients into their own database, with "amounts" and "title" as columns/attributes
+
+ 4. ??
