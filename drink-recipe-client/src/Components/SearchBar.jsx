@@ -1,4 +1,4 @@
-import React, { useRef, useState, useContext, useEffect } from 'react'
+import  { useRef, useEffect } from 'react'
 
 function SearchBar({ searchTerm, setSearchTerm }) {
     const searchInputRef = useRef(null);

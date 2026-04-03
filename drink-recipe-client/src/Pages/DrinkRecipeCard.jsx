@@ -1,4 +1,4 @@
-import { Outlet, Link, useOutletContext, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 function DrinkRecipeCard() {

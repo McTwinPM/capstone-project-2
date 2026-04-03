@@ -1,8 +1,7 @@
-from random import choice, randint
+from random import choice
 from faker import Faker
 from models import db, User, DrinkRecipe
 from app import app
-import os
 
 fake = Faker()
 

@@ -1,10 +1,9 @@
-from flask import request, make_response
-from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity, verify_jwt_in_request
-from config import app, db, bcrypt, api
+from flask import request
+from flask_jwt_extended import create_access_token, get_jwt_identity, verify_jwt_in_request
+from config import app, db, api
 from models import User, DrinkRecipe, UserSchema, DrinkRecipeSchema
 from marshmallow import ValidationError
 from flask_restful import Resource
-from datetime import datetime
 
 @app.before_request
 def before_request():
