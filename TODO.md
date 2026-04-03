@@ -26,11 +26,11 @@
         3. RecipeID (done)
         4. AddRecipe (done)
     4. CSS
-        1. App
-        2. Home
-        3. RecipeList
-        4. AddRecipe page
-        5. Navbar
+        1. App (done)
+        2. Login (done)
+        3. RecipeList (done)
+        4. AddRecipe page (done)
+        5. Navbar (done)
 3. Cleanup
     1. frontend
         1. remove 'assets' and 'public' folders (done)
