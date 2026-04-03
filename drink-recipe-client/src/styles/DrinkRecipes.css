@@ -29,3 +29,40 @@
 .search-button:hover {
     background-color: #0056b3;
 }
+
+.pagination-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.pagination-next-button {
+    order: 1;
+    padding: 8px 16px;
+    font-size: 16px;
+    background-color: #ff9900;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.pagination-next-button:hover {
+    background-color: #cc7a00;
+}
+
+.pagination-previous-button {
+    order: 2;
+    padding: 8px 16px;
+    font-size: 16px;
+    background-color: #ff9900;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.pagination-previous-button:hover {
+    background-color: #cc7a00;
+}

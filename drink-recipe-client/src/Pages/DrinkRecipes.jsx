@@ -7,6 +7,7 @@ function DrinkRecipes() {
   const [recipes, setRecipes] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
 
   useEffect(() => {
@@ -16,7 +17,11 @@ function DrinkRecipes() {
       }
     })
       .then((r) => r.json())
-      .then((data) => setRecipes(data.drink_recipes));
+      .then((data) => {
+        setRecipes(data.drink_recipes);
+        setPage(data.current_page);
+        setTotalPages(data.pages);
+      });
   }, []);
 
   const filteredRecipes = recipes.filter((recipe) =>
@@ -24,26 +29,32 @@ function DrinkRecipes() {
   );
 
   const handleLoadMore = () => {
-    setPage((prevPage) => prevPage + 1);
     fetch(`/api/drink_recipes?page=${page + 1}`, {
       headers: {
         "Authorization": `Bearer ${localStorage.getItem("token")}`
       }
     })
       .then((r) => r.json())
-      .then((data) => setRecipes((prevRecipes) => [...prevRecipes, ...data.drink_recipes]));
+      .then((data) => {
+        setRecipes(data.drink_recipes);
+        setPage(data.current_page);
+        setTotalPages(data.pages);
+      });
   };
 
   const handleLoadprevious = () => {
     if (page > 1) {
-      setPage((prevPage) => prevPage - 1);
       fetch(`/api/drink_recipes?page=${page - 1}`, {
         headers: {
           "Authorization": `Bearer ${localStorage.getItem("token")}`
         }
       })
         .then((r) => r.json())
-        .then((data) => setRecipes((prevRecipes) => [...prevRecipes, ...data.drink_recipes]));
+        .then((data) => {
+          setRecipes(data.drink_recipes);
+          setPage(data.current_page);
+          setTotalPages(data.pages);
+        });
     }
   };
 
@@ -60,10 +71,14 @@ function DrinkRecipes() {
             </li>
           ))}
         </ul>
-        <button className='pagination-next-button' onClick={handleLoadMore}>Load More</button>
-        {page > 1 && (
-          <button className='pagination-previous-button' onClick={handleLoadprevious}>Load Previous</button>
-        )}
+        <div className="pagination-buttons">
+          {page > 1 && (
+            <button className='pagination-previous-button' onClick={handleLoadprevious}>Load Previous</button>
+          )}
+            {page < totalPages && (
+              <button className='pagination-next-button' onClick={handleLoadMore}>Load More</button>
+            )}
+        </div>
     </>
   );
 }
